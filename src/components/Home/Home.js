@@ -12,7 +12,7 @@ function Home() {
 
         return await axios.get(`https://movies-library-wesam.herokuapp.com/trending`)
             .then(result => {
-                console.log(result.data);
+                
                 return result.data;
             }).catch((err) => {
                 console.log(err);

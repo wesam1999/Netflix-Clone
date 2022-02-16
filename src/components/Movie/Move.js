@@ -4,15 +4,16 @@ import Model from '../MovieList/model/Modal';
 
 
 function Move({Mov})
-{ const [cardInfo,setCardInfo] = useState({});
+{
+     const [cardInfo,setCardInfo] = useState({});
 const [show,setShow] = useState(false);
-const handleClose =()=>setShow(false);
+const handleClose =()=>{setShow(false);}
     return (
         <>
         
             
                             
-                                <Card >
+                                <Card style={{width:'50rem'}}>
                                     <Card.Img  variant="top" src={`https://image.tmdb.org/t/p/w500${Mov.poster_path}`} />
                                     <Card.Body>
                                         <Card.Title >{Mov.title}</Card.Title>

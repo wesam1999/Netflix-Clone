@@ -11,6 +11,7 @@ function MovieList({data})
                 <Row md={3}>
                     {
                         data.length && data.map((Mov) => (
+                            
                             <Move Mov={Mov} />
                         ))
                     }
