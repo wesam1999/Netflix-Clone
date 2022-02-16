@@ -1,14 +1,37 @@
+import { useState, useEffect } from 'react';
 import MovieList from '../MovieList/MovieList';
-import {Routes,Route} from 'react-router-dom';
-function Home()
-{let API=`https://api.themoviedb.org/3/trending/all/week?api_key=37ddc7081e348bf246a42f3be2b3dfd0&language=en-US;`;
+import axios from 'axios';
+
+function Home() {
+    const [data, setData] = useState([]);
+
+
+
+
+    const getAllRecipes = async () => {
+
+        return await axios.get(`https://movies-library-wesam.herokuapp.com/trending`)
+            .then(result => {
+                console.log(result.data);
+                return result.data;
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        void (async () => {
+            let data = await getAllRecipes();
+            setData(data);
+        })();
+    }, []);
     return (
         <>
-       
-            <MovieList api={API}/>
-       
-        
-        
+
+            <MovieList data={data} />
+
+
+
         </>
     );
 }
