@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import {useRef} from 'react';
 
+
 function Modalo({cardInfo, show, handleClose}) {
     const commentInputRef = useRef("");
 

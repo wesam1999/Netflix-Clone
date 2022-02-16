@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button,Card} from 'react-bootstrap';
 import Model from '../MovieList/model/Modal';
+import './Move.css';
 
 
 function Move({Mov})
