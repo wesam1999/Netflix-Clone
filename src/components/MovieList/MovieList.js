@@ -1,6 +1,6 @@
 import {  Container, Row } from 'react-bootstrap';
 import Move from '../Movie/Move';
-
+import './MovieList.css';
 function MovieList({data})
 { 
 
