@@ -1,0 +1,14 @@
+.link{
+    text-decoration: none;
+    color: rgb(236, 28, 28);
+    margin: 0px 10px;
+
+}
+
+.link:hover{
+    color: rgb(231, 8, 8);
+}
+.me-auto{
+    margin: 0px 10px;
+}
+
