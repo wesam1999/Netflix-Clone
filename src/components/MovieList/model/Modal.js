@@ -1,7 +1,29 @@
 import Modal from 'react-bootstrap/Modal';
 import {Button} from 'react-bootstrap';
-function Model ({cardInfo, show, handleClose})
-{
+import axios from 'axios';
+import {useRef} from 'react';
+
+
+function Modalo({cardInfo, show, handleClose}) {
+    const commentInputRef = useRef("");
+
+     console.log(cardInfo)
+    // title, readyInMinutes, summary, vegetarian, instructions, sourceUrl, image, comment
+
+     const addToFav = async ()=>{
+         let comment = commentInputRef.current.value;
+        let fav = {title:cardInfo.title, readyInMinutes:cardInfo.readyInMinutes, summary:cardInfo.summary, vegetarian:cardInfo.vegetarian, instructions:cardInfo.instructions, sourceUrl:cardInfo.sourceUrl, image:cardInfo.image, comment:comment}
+       
+        await axios.post(`https://movies-library-wesam.herokuapp.com/addFavRecipe`,fav)
+                   .then(()=>{
+                       console.log("Done :) ");
+                   }).catch((err)=>{
+                       console.log(err);
+                   });
+   
+    }
+
+
     return (
         <>
             <Modal show={show} onHide={handleClose} animation={false}>
@@ -10,18 +32,23 @@ function Model ({cardInfo, show, handleClose})
                 </Modal.Header>
                 <Modal.Body className="body">
                     <h3>{cardInfo.title}</h3>
-                    <img alt="" src={`https://image.tmdb.org/t/p/w500${cardInfo.poster_path}`} />
+                    <img alt="" src={cardInfo.image} />
                     <div>
                         <label htmlFor="op">Write Your Opinion</label>
-                        <input placeholder="Write Your Opinion" type="text" id="op" />
+                        <input ref={commentInputRef} placeholder="Write Your Opinion" type="text" id="op" />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary"> Add To Favorite </Button>
+                    <Button variant="primary"
+                     onClick={()=>{
+                        addToFav();
+                        handleClose();
+                     }}
+                    > Add To Favorite </Button>
                 </Modal.Footer>
             </Modal>
         </>
     )
-
 }
-export default Model;
+
+export default Modalo;
