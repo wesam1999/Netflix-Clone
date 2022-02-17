@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button,Card} from 'react-bootstrap';
 import Model from '../MovieList/model/Modal';
+import './Move.css';
 
 
 function Move({Mov})
@@ -28,6 +29,7 @@ const handleClose =()=>{setShow(false);}
                                             onClick={()=>{
                                                 setCardInfo(Mov)
                                                 setShow(true);
+                                                console.log(cardInfo);
                                             }}>Add To Favorite</Button>
                                         </div>
                                     </Card.Body>

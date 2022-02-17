@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import {useRef} from 'react';
 
+
 function Modalo({cardInfo, show, handleClose}) {
     const commentInputRef = useRef("");
 
@@ -13,7 +14,7 @@ function Modalo({cardInfo, show, handleClose}) {
          let comment = commentInputRef.current.value;
         let fav = {title:cardInfo.title, readyInMinutes:cardInfo.readyInMinutes, summary:cardInfo.summary, vegetarian:cardInfo.vegetarian, instructions:cardInfo.instructions, sourceUrl:cardInfo.sourceUrl, image:cardInfo.image, comment:comment}
        
-        await axios.post(`https://movies-library-wesam.herokuapp.com/addFavRecipe`,fav)
+        await axios.post(`https://movies-library-wesam.herokuapp.com/addMovie`,fav)
                    .then(()=>{
                        console.log("Done :) ");
                    }).catch((err)=>{
