@@ -18,9 +18,9 @@ function Fav(){
 
     const getFavRecipes = async () => {
         // await // here the thing that will happen (fetching from API or getting from database )
-        return await axios.get(`https://movies-library-wesam.herokuapp.com/favRecipes`)
+        return await axios.get(`https://movies-library-wesam.herokuapp.com/getMovies`)
             .then(result => {
-                console.log(result.data);
+             
                 setData(result.data);
             }).catch((err) => {
                 console.log(err);
@@ -50,7 +50,7 @@ function Fav(){
                 data.length && data.map((ele) => (
                     <Col key={ele.id} md={4}>
                         <Card className='div-card'>
-                            <Card.Img className='div-card-img' variant="top" src={ele.image} />
+                            <Card.Img className='div-card-img' variant="top" src={`https://image.tmdb.org/t/p/w500${ele.poster_path}`} />
                             <Card.Body>
                                 <Card.Title className='div-card-title'>{ele.title}</Card.Title>
                                 <Card.Link className='div-card-link'>

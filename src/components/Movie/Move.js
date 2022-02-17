@@ -29,6 +29,7 @@ const handleClose =()=>{setShow(false);}
                                             onClick={()=>{
                                                 setCardInfo(Mov)
                                                 setShow(true);
+                                                console.log(cardInfo);
                                             }}>Add To Favorite</Button>
                                         </div>
                                     </Card.Body>
